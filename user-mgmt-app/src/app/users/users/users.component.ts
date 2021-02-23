@@ -8,6 +8,7 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { ColumnMode } from '@swimlane/ngx-datatable'
 import { User } from '../domain/user.domain'
+import { UserDialogReactiveFormComponent } from '../user-dialog-reactive-form/user-dialog-reactive-form.component'
 import { UserDialogComponent } from '../user-dialog/user-dialog.component'
 
 @Component({
@@ -39,6 +40,12 @@ export class UsersComponent implements OnInit, OnChanges {
     ngOnInit(): void {}
 
     openUserForm(): void {
+      this.openUserFormReactive();
+    }
+    openUserFormTemplate(): void {
         this.modalService.open(UserDialogComponent)
+    }
+    openUserFormReactive(): void {
+        this.modalService.open(UserDialogReactiveFormComponent)
     }
 }
