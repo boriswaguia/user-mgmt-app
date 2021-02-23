@@ -3,3 +3,17 @@
 <button>Edit User</button>
 
 <button>Delete User</button>
+
+
+<ngx-datatable
+  class="table"
+  [rows]="rows"
+  [loadingIndicator]="loadingIndicator"
+  [columns]="columns"
+  [columnMode]="ColumnMode.force"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  rowHeight="auto"
+  [reorderable]="reorderable"
+>
+</ngx-datatable>

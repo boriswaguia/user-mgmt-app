@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { ColumnMode } from '@swimlane/ngx-datatable';
+import { User } from '../domain/user.domain';
 
 @Component({
     selector: 'app-users',
@@ -6,7 +8,19 @@ import { Component, OnInit } from '@angular/core'
     styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  rows: User[] = [];
+
+  loadingIndicator = true;
+  reorderable = true;
+
+  columns = [{ prop: 'login'}, { prop: 'firstName' }, { prop: 'lastName' }, {prop: 'password', sortable: false}];
+
+  ColumnMode = ColumnMode;
+
     constructor() {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.rows = [
+      ];
+    }
 }
