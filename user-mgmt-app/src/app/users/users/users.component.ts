@@ -8,6 +8,7 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { ColumnMode } from '@swimlane/ngx-datatable'
 import { User } from '../domain/user.domain'
+import { UserService } from '../services/user.service'
 import { UserDialogReactiveFormComponent } from '../user-dialog-reactive-form/user-dialog-reactive-form.component'
 import { UserDialogComponent } from '../user-dialog/user-dialog.component'
 
@@ -31,13 +32,17 @@ export class UsersComponent implements OnInit, OnChanges {
 
     ColumnMode = ColumnMode
 
-    constructor(private modalService: NgbModal) {}
+    constructor(private modalService: NgbModal, private userService: UserService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         console.log('changes', changes)
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.userService.get().subscribe(users => {
+        this.rows = [...users];
+      })
+    }
 
     openUserForm(): void {
       this.openUserFormReactive();
