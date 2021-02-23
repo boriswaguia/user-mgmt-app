@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { UserDialogComponent } from './user-dialog.component';
+import { UserDialogComponent } from './user-dialog.component'
 
 describe('UserDialogComponent', () => {
-  let component: UserDialogComponent;
-  let fixture: ComponentFixture<UserDialogComponent>;
+    let component: UserDialogComponent
+    let fixture: ComponentFixture<UserDialogComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UserDialogComponent ]
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [UserDialogComponent],
+        }).compileComponents()
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UserDialogComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it('should create', () => {
+        expect(component).toBeTruthy()
+    })
+})
