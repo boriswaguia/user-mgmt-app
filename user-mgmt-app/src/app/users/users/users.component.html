@@ -4,6 +4,16 @@
 
 <button>Delete User</button>
 
+<app-life-cycle-test *ngIf="rows[0]?.login" [userName]="rows[0]?.login" (lifecycleHookViewChanged)="execute($event)" >
+
+  <h1>Content inside the component</h1>
+</app-life-cycle-test>
+
+<!-- <ng-container *ngIf="rows[0]?.login">
+</ng-container> -->
+<!-- <span *ngIf="rows[0]">
+</span> -->
+
 <ngx-datatable
     class="table"
     [rows]="rows"

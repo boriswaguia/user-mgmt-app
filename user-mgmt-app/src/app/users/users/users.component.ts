@@ -39,8 +39,10 @@ export class UsersComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+      console.log('UsersComponent ngOnInit', this.rows);
       this.userService.get().subscribe(users => {
         this.rows = [...users];
+        console.log('UsersComponent ngOnInit', this.rows);
       })
     }
 
@@ -52,5 +54,11 @@ export class UsersComponent implements OnInit, OnChanges {
     }
     openUserFormReactive(): void {
         this.modalService.open(UserDialogReactiveFormComponent)
+    }
+
+    execute(event: unknown): void {
+      if(event) {
+        console.log('event', event);
+      }
     }
 }
