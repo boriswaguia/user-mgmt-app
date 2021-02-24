@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime } from 'rxjs/operators';
+import { User } from '../domain/user.domain';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-dialog-reactive-form',
@@ -11,7 +14,7 @@ export class UserDialogReactiveFormComponent implements OnInit {
 
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService, private activeModal: NgbActiveModal) {
     this.userForm = this.fb.group({
       firstName: [''],
       lastName: [''],
@@ -34,7 +37,10 @@ export class UserDialogReactiveFormComponent implements OnInit {
   closeModal(): void {}
 
   saveForm(): void {
-    const user = this.userForm.getRawValue();
+    const user: User = this.userForm.getRawValue();
+    this.userService.save(user).subscribe(result => {
+      this.activeModal.close(result);
+    });
     console.log('user', user);
   }
 }

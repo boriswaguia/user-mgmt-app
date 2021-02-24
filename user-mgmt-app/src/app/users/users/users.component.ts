@@ -7,6 +7,8 @@ import {
 } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { ColumnMode } from '@swimlane/ngx-datatable'
+import { from } from 'rxjs'
+import { filter, switchMap } from 'rxjs/operators'
 import { User } from '../domain/user.domain'
 import { UserService } from '../services/user.service'
 import { UserDialogReactiveFormComponent } from '../user-dialog-reactive-form/user-dialog-reactive-form.component'
@@ -39,10 +41,8 @@ export class UsersComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-      console.log('UsersComponent ngOnInit', this.rows);
       this.userService.get().subscribe(users => {
         this.rows = [...users];
-        console.log('UsersComponent ngOnInit', this.rows);
       })
     }
 
@@ -53,7 +53,13 @@ export class UsersComponent implements OnInit, OnChanges {
         this.modalService.open(UserDialogComponent)
     }
     openUserFormReactive(): void {
-        this.modalService.open(UserDialogReactiveFormComponent)
+        const modalRef = this.modalService.open(UserDialogReactiveFormComponent);
+        from(modalRef.result).pipe(
+          filter(result => !!result),
+          switchMap(() => this.userService.get())
+        ).subscribe((users) => {
+          this.rows = [...users];
+        })
     }
 
     execute(event: unknown): void {

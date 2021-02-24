@@ -8,6 +8,8 @@ import { User } from '../domain/user.domain';
   providedIn: 'root'
 })
 export class UserService {
+
+
   private static readonly USERS_URL = `${environment.backendUrl}/users`;
 
   constructor(private httpClient: HttpClient) { }
@@ -16,4 +18,9 @@ export class UserService {
   get(): Observable<User[]> {
     return this.httpClient.get<User[]>(UserService.USERS_URL);
   }
+
+  save(user: User): Observable<User> {
+    return this.httpClient.post<User>(UserService.USERS_URL, user);
+  }
+
 }
