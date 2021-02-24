@@ -1,6 +1,5 @@
 import {
     Component,
-    Input,
     OnChanges,
     OnInit,
     SimpleChanges,
@@ -30,9 +29,9 @@ export class UsersComponent implements OnInit, OnChanges {
         { prop: 'firstName' },
         { prop: 'lastName' },
         { prop: 'password', sortable: false },
-    ]
+    ];
 
-    ColumnMode = ColumnMode
+    ColumnMode = ColumnMode;
 
     constructor(private modalService: NgbModal, private userService: UserService) {}
 

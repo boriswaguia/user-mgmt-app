@@ -6,7 +6,7 @@ import { User } from '../domain/user.domain';
 import { UserService } from './user.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
   let service: UserService;
 
   let httpClient: HttpClient;

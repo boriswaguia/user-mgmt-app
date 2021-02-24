@@ -1,12 +1,17 @@
 <a [routerLink]="''" class="btn btn-primary">Back to home</a>
-<button (click)="openUserForm()" class="btn btn-secondary">Create User</button>
+<button (click)="openUserForm()" class="btn btn-secondary open-user-form-test">Create User</button>
 <button>Edit User</button>
 
 <button>Delete User</button>
 
+<span *ngIf="rows.length === 0">
+  No user data
+</span>
+
 <ngx-datatable
     class="table"
     [rows]="rows"
+    *ngIf="rows.length"
     [loadingIndicator]="loadingIndicator"
     [columns]="columns"
     [columnMode]="ColumnMode.force"
