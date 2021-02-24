@@ -5,7 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 import { UsersComponent } from './users.component'
 
-fdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
     let component: UsersComponent
     let fixture: ComponentFixture<UsersComponent>;
 
