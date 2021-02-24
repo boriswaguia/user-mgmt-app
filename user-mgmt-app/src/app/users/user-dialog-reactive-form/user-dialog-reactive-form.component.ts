@@ -33,14 +33,17 @@ export class UserDialogReactiveFormComponent implements OnInit {
     })
   }
 
-  dismissDialog(): void {}
-  closeModal(): void {}
+  dismissDialog(): void {
+    this.activeModal.dismiss();
+  }
+  closeModal(): void {
+    this.activeModal.close();
+  }
 
   saveForm(): void {
     const user: User = this.userForm.getRawValue();
     this.userService.save(user).subscribe(result => {
       this.activeModal.close(result);
     });
-    console.log('user', user);
   }
 }

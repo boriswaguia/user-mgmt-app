@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { HomeRoutingModule } from './home/home-routing.module'
 import { UsersModule } from './users/users.module'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
     declarations: [AppComponent],
@@ -15,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
         HomeRoutingModule,
         UsersModule,
         NgbModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
     providers: [],
     bootstrap: [AppComponent],
